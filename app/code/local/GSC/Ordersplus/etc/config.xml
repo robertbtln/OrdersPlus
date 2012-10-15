@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <GSC_Ordersplus>
+            <version>0.1.0</version>
+        </GSC_Ordersplus>
+    </modules>
+    
+    <global>
+        <helpers>
+            <ordersplus>
+                <class>GSC_Ordersplus_Helper</class>
+            </ordersplus>
+        </helpers>
+        <resources>
+            <ordersplus_setup>
+                <setup>
+                    <module>GSC_Ordersplus</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </ordersplus_setup>
+            <ordersplus_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </ordersplus_write>
+            <ordersplus_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </ordersplus_read>
+        </resources>
+        <models>
+            <ordersplus>
+                <class>GSC_Ordersplus_Model</class>
+            </ordersplus>
+            <sales_mysql4>
+                <rewrite>
+                    <order_collection>GSC_Ordersplus_Model_Mysql4_Order_Collection</order_collection>
+                </rewrite>
+            </sales_mysql4>
+        </models>
+        <blocks>
+            <adminhtml>
+                <rewrite>
+                    <sales_order_grid>GSC_Ordersplus_Block_Adminhtml_Sales_Order_Grid</sales_order_grid>
+                </rewrite>
+            </adminhtml>
+            <ordersplus>
+                <class>GSC_Ordersplus_Block</class>
+            </ordersplus>
+        </blocks>
+    </global>
+
+    <default>
+        <ordersplus>
+           <originalcolumns>
+                <store_id>1</store_id>
+                <billing_name>1</billing_name>
+                <shipping_name>1</shipping_name>
+                <grand_total>1</grand_total>
+                <view>1</view>
+           </originalcolumns>
+        </ordersplus>
+    </default>
+
+    <adminhtml>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <ordersplus>
+                            <title>GSC Orders Plus</title>
+                            <sort_order>10</sort_order>
+                        </ordersplus>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <ordersplus>
+                                            <title>Order Grid Additions &amp; Addons</title>
+                                        </ordersplus>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+	
+</config>
