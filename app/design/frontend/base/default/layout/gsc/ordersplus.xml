@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/ordersplus.css</stylesheet></action>
+        </reference>
+    </default>
+
+    <!--
+    One page checkout order review block
+    -->
+    <checkout_onepage_review>
+        <reference name="checkout.onepage.agreements">
+            <action method="setTemplate"><template>ordersplus/checkout/onepage/agreements.phtml</template></action>
+        </reference>
+    </checkout_onepage_review>
+
+</layout>

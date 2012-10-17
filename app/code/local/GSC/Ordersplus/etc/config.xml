@@ -94,5 +94,25 @@
             </resources>
         </acl>
     </adminhtml>
-	
+    
+	<frontend>
+        <events>
+            <checkout_type_onepage_save_order>
+                <observers>
+                    <ordersplus_onepage>
+                        <type>singleton</type>
+                        <class>GSC_Ordersplus_Model_Observer</class>
+                        <method>setOrderComment</method>
+                    </ordersplus_onepage>
+                </observers>
+            </checkout_type_onepage_save_order>
+        </events>
+         <layout>
+            <updates>
+                <ordersplus>
+                    <file>gsc/ordersplus.xml</file>
+                </ordersplus>
+            </updates>
+        </layout>
+    </frontend>
 </config>
