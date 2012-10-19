@@ -24,7 +24,8 @@ class GSC_Ordersplus_Block_Adminhtml_Sales_Order_Grid_Renderer_Products extends 
         $html = '';
 
         if($this->getColumn()->getRenderColumn() == 'names') {
-            $html .= sprintf('<tr title="%s" style="cursor:default;"><td><div style="font-weight:bold; margin-bottom:5px; color:#202020;">- Total Quantity -</div></td><td style="width:1em; font-weight:bold; color:#202020;">%s</td></tr>', $sku, array_sum($qtys), trim($names[$i]), $sku, trim($qtys[$i]));
+            // Disabled total due to 'comment multiplyer'
+            //$html .= sprintf('<tr title="%s" style="cursor:default;"><td><div style="font-weight:bold; margin-bottom:5px; color:#202020;">- Total Quantity -</div></td><td style="width:1em; font-weight:bold; color:#202020;">%s</td></tr>', $sku, array_sum($qtys), trim($names[$i]), $sku, trim($qtys[$i]));
             $show = Mage::getStoreConfig('ordersplus/orderinfocolumns/product_show');
             $j = 0;
               
