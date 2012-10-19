@@ -49,6 +49,8 @@ class GSC_Ordersplus_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml_Blo
         $collection->getSelect()->joinLeft(array('sfo'=>'sales_flat_order'),'sfo.entity_id=main_table.entity_id',array('sfo.customer_email','sfo.weight','sfo.discount_description','sfo.increment_id','sfo.store_id','sfo.created_at','sfo.status','sfo.base_grand_total','sfo.grand_total','shipping_description','sfo.total_item_count'));
         $collection->getSelect()->joinLeft(array('sfoa'=>'sales_flat_order_address'),'main_table.entity_id = sfoa.parent_id AND sfoa.address_type="shipping"',array('sfoa.street','sfoa.city','sfoa.region','sfoa.postcode','sfoa.telephone','sfoa.country_id'));
         $collection->getSelect()->joinLeft(array('sfop' => 'sales_flat_order_payment'),'main_table.entity_id = sfop.parent_id',array('sfop.method'));
+        $collection->getSelect()->joinLeft(array('sfosh' => 'sales_flat_order_status_history'),'main_table.entity_id = sfosh.parent_id',array('sfosh.comment'));
+
         $collection->getSelect()->group('entity_id');
         
         $this->setCollection($collection);
@@ -172,6 +174,17 @@ class GSC_Ordersplus_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml_Blo
                 'render_column' => 'names',
                 'sortable'  => FALSE,
                 'type'        => 'text',
+            ));
+        }
+
+        if (Mage::getStoreConfig('ordersplus/orderinfocolumns/comment'))
+        {
+            $this->addColumn('comment', array(
+                    'header' => Mage::helper('sales')->__('Customer Comment'),
+                    'index' => 'comment',
+                    'renderer'  => 'GSC_Ordersplus_Block_Adminhtml_Sales_Order_Grid_Renderer_Comments',
+                    'filter_index' => 'sfosh.comment',
+                    'width' => '70px',
             ));
         }
 
