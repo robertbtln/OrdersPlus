@@ -22,7 +22,9 @@ class GSC_Ordersplus_Model_Observer
         $_comments = strip_tags($_request->getParam('gscOrderComment'));  
   
         if(!empty($_comments)){  
-            $_order->setCustomerNote($_comments);              
+            $_order->addStatusHistoryComment($_comments, null)
+                ->setIsVisibleOnFront(true)
+                ->setIsCustomerNotified(false);
         }          
           
         return $this;          

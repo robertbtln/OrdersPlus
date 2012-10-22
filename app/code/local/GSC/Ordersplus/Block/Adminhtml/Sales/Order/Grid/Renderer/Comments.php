@@ -21,7 +21,7 @@ class GSC_Ordersplus_Block_Adminhtml_Sales_Order_Grid_Renderer_Comments extends 
       //var_dump($row->getData()); 
       $comments = $row->getData('comment');
 
-      $words = array('NULL', 'Captured amount of','Authorize.Net Transaction ID','authorize and capture','Authorized amount of','Capturing amount of');
+      $words = array('Captured amount of','Authorize.Net Transaction ID','authorize and capture','Authorized amount of','Capturing amount of');
       $match_expression = implode("|", $words);
  
       if (!preg_match('/'.$match_expression.'/i', $comments)) {
