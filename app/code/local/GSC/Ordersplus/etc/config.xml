@@ -46,6 +46,7 @@
             <adminhtml>
                 <rewrite>
                     <sales_order_grid>GSC_Ordersplus_Block_Adminhtml_Sales_Order_Grid</sales_order_grid>
+                    <sales_order_create_search_grid>GSC_Ordersplus_Block_Adminhtml_Sales_Order_Create_Search_Grid</sales_order_create_search_grid>
                 </rewrite>
             </adminhtml>
             <ordersplus>
@@ -67,6 +68,13 @@
     </default>
 
     <adminhtml>
+        <layout>
+            <updates>
+                <ordersplus>
+                    <file>gsc/ordersplus.xml</file>
+                </ordersplus>
+            </updates>
+        </layout>
         <acl>
             <resources>
                 <all>
