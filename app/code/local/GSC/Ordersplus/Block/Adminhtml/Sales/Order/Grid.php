@@ -38,20 +38,21 @@ class GSC_Ordersplus_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml_Blo
     protected function _prepareCollection()
     {
         $collection = Mage::getResourceModel($this->_getCollectionClass());
+        $resource = Mage::getSingleton('core/resource');
 
-        $collection->getSelect()->joinLeft(array('sfoi' => 'sales_flat_order_item'),'main_table.entity_id = sfoi.order_id AND sfoi.parent_item_id IS NULL', array(
+        $collection->getSelect()->joinLeft(array('sfoi' => $resource->getTableName('sales_flat_order_item')),'main_table.entity_id = sfoi.order_id AND sfoi.parent_item_id IS NULL', array(
             'skus'  => new Zend_Db_Expr('group_concat(sfoi.sku SEPARATOR " | ")'),
             'qtys'  => new Zend_Db_Expr('group_concat(sfoi.qty_ordered SEPARATOR " | ")'),
             'names' => new Zend_Db_Expr('group_concat(sfoi.name SEPARATOR " | ")'),
         ));
         $collection->getSelect()->group('entity_id');
-        $collection->getSelect()->joinLeft(array('sfog' => 'sales_flat_order_grid'),'main_table.entity_id = sfog.entity_id',array('sfog.shipping_name','sfog.billing_name'));
-        $collection->getSelect()->joinLeft(array('sfo'=>'sales_flat_order'),'sfo.entity_id=main_table.entity_id',array('sfo.customer_email','sfo.weight','sfo.discount_description','sfo.increment_id','sfo.store_id','sfo.created_at','sfo.status','sfo.base_grand_total','sfo.grand_total','shipping_description','sfo.total_item_count'));
-        $collection->getSelect()->joinLeft(array('sfoa'=>'sales_flat_order_address'),'main_table.entity_id = sfoa.parent_id AND sfoa.address_type="shipping"',array('sfoa.street','sfoa.city','sfoa.region','sfoa.postcode','sfoa.telephone','sfoa.country_id'));
-        $collection->getSelect()->joinLeft(array('sfop' => 'sales_flat_order_payment'),'main_table.entity_id = sfop.parent_id',array('sfop.method'));
+        $collection->getSelect()->joinLeft(array('sfog' => $resource->getTableName('sales_flat_order_grid')),'main_table.entity_id = sfog.entity_id',array('sfog.shipping_name','sfog.billing_name'));
+        $collection->getSelect()->joinLeft(array('sfo' => $resource->getTableName('sales_flat_order')),'sfo.entity_id=main_table.entity_id',array('sfo.customer_email','sfo.weight','sfo.discount_description','sfo.increment_id','sfo.store_id','sfo.created_at','sfo.status','sfo.base_grand_total','sfo.grand_total','shipping_description','sfo.total_item_count'));
+        $collection->getSelect()->joinLeft(array('sfoa' => $resource->getTableName('sales_flat_order_address')),'main_table.entity_id = sfoa.parent_id AND sfoa.address_type="shipping"',array('sfoa.street','sfoa.city','sfoa.region','sfoa.postcode','sfoa.telephone','sfoa.country_id'));
+        $collection->getSelect()->joinLeft(array('sfop' => $resource->getTableName('sales_flat_order_payment')),'main_table.entity_id = sfop.parent_id',array('sfop.method'));
         // Comments: Filtered for Parent Id, Visible on Frontend (true), Customer Notified (false), Status (null) [to work with total quatity]
         // 'AND sfosh.entity_name="order"' removed for Magento 1.5.1.0 compatibility
-        $collection->getSelect()->joinLeft(array('sfosh' => 'sales_flat_order_status_history'),'main_table.entity_id = sfosh.parent_id AND sfosh.is_visible_on_front=true AND sfosh.is_customer_notified=false AND sfosh.status IS NULL',array('sfosh.comment'));
+        $collection->getSelect()->joinLeft(array('sfosh' => $resource->getTableName('sales_flat_order_status_history')),'main_table.entity_id = sfosh.parent_id AND sfosh.is_visible_on_front=true AND sfosh.is_customer_notified=false AND sfosh.status IS NULL',array('sfosh.comment'));
 
         $collection->getSelect()->group('entity_id');
         
