@@ -1,12 +1,16 @@
-# What OrdersPlus is
+## Order Plus
+
+**Short Version:**
 
 **OrdersPlus** is a *Magento* module that was originally made to extend the functionality of the Magento Orders Grid (*Sales > Orders*). It has evolved from that into so much more and **OrdersPlus** has gained so much more functionality.
 
-Click [here for Orders Plus documentation, images, etc](http://www.graphicsourcecode.com/work/web-design-development/orders-plus/ "Orders Plus documentation, images, etc")
+**Long(er) Version:**
 
-Here is a list of what this module has to offer:
+The standard Magento Orders Grid is regarded by many to be a little lacking when it comes to information about orders. By default, you would need to go into each order to get some important pieces of information. This module lets the admin of the shop control extra pieces of information for that grid. You can enable extra columns to show on the orders grid such as Order Information (products, skus & quantities ordered), payment type, various customer information, etc. You can also disable default columns if you believe they’re not needed.
 
-### Sales Order Grid
+**Here is a list of what this module has to offer:**
+
+### Options
 
 Options to hide some of the columns:
 
@@ -39,13 +43,52 @@ Adds new columns:
 * Shipping (to) Zip/Postal Code
 * Customer (Ship to) Phone Number
 
-#### Sales Information *(NEW)*
+#### Sales Information _(NEW)_
 * Customer Lifetime Sales Data (Sales Order Overview)
 * Applicable for logged in customers only.
 * Stock level (Sales Order Overview Page - Items Ordered table)
 * Quantity Ordered - in parenthesis (Sales Order Overview Page - Items Ordered table)
 * Stock level (Create Order Product Grids)
 
-As was mentioned in the *Order Breakdown* area, this module adds commenting functionality for customers during checkout. You can read the comment from the customer in the *Sales Orders Grid* or in it's standard place within the order.
+As was mentioned in the _Order Breakdown_ area, this module adds commenting functionality for customers during checkout. You can read the comment from the customer in the _Sales Orders Grid_ or in it's standard place within the order.
 
-**Sales Information *(NEW)*** extends the functionality past the *Sales Orders Grid* and now adds useful information on the *Order Overview* page and on the **Create Order** grids.
+**Sales Information _(NEW)_** extends the functionality past the _Sales Orders Grid_ and now adds useful information on the _Order Overview_ page and on the **Create Order** grids.
+
+
+## Instructions
+
+Please backup your site and test on a test site/server first!
+
+These instructions are for the infamous (well, um…) Orders Plus module.
+
+1. Retrieve the module code from Github however you desire.
+2. Upload (via FTP client, such as [FileZilla](http://filezilla-project.org/)) the **app** directory to the root of your Magento install.
+3. If you're logged into your admin panel, please log out and then log back in. Otherwise you will get that pesky _**404, not found**_ message when trying to view the **config** area.
+
+Then navigate to
+
+```bash
+System >  Configuration > [GSC Modules] Orders Plus
+```
+
+for additional options. Once there you'll see the following tabs
+
+- Sales Grid Columns: Original (Default) Columns
+- Additional Grid Columns: Order Breakdown Columns
+- Additional Grid Columns: Customer Information Columns
+- OrdersPlus Main Option Tabs
+
+![](http://www.graphicsourcecode.com/wp-content/uploads/2012/09/ordersplus-screen1.jpg)
+
+**Here's a general description of each tab:**
+
+- **Sales Grid Columns: Original (Default) Columns:** This gives you enabling/disabling options for certain default columns in the sales grid.
+- **Additional Grid Columns: Order Breakdown Columns:** This gives you enabling/disabling options for certain columns in the sales grid that have to do with the order itself. For instance, you can choose to enable payment method, product information or shipping method (to name a few).
+- **Additional Grid Columns: Customer Information Columns:** This gives you enabling/disabling options for certain columns in the sales grid that have to do with the customer. For instance, you can choose to enable customer email, country id or phone number (to name a few).
+- **Note:** all of the above options are _searchable_.
+
+The titles are pretty self explanatory so I won't go into each one. The ones that need it have a comment below explaining what it is for. And the "switches" are pretty easy too! **Enable** with turn on (_show_) the column in the sales grid, while **disable** will turn the column off (_hide it_).
+
+Once configured the way you want, head to **Sales** > **Orders** to view the grid and reap the benefit of all the extra information.
+
+**Please note:** you will have to scroll to the right on the sales grid if you have more than the default number of columns showing.
