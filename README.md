@@ -2,7 +2,7 @@
 
 **Short Version:**
 
-**OrdersPlus** is a *Magento* module that was originally made to extend the functionality of the Magento Orders Grid (*Sales > Orders*). It has evolved from that into so much more and **OrdersPlus** has gained so much more functionality.
+**OrdersPlus** is a *Magento* module that was originally made to extend the functionality of the Magento Orders Grid (_**Sales** > **Orders**_). It has evolved from that into so much more and **OrdersPlus** has gained so much more functionality.
 
 **Long(er) Version:**
 
