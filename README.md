@@ -21,7 +21,7 @@ Options to hide some of the columns:
 * Grand Total (Purchased)
 * Action
 
-Adds new columns:
+_**Adds new columns:**_
 
 #### Order Breakdown Columns
 * Discount Code
