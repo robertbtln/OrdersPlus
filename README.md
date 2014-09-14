@@ -54,6 +54,12 @@ As was mentioned in the _Order Breakdown_ area, this module adds commenting func
 
 **Sales Information _(NEW)_** extends the functionality past the _Sales Orders Grid_ and now adds useful information on the _Order Overview_ page and on the **Create Order** grids.
 
+## Versions Tested
+
+- MAGENTO CE 1.5.1.0
+- MAGENTO CE 1.6.2.0
+- MAGENTO CE 1.7.0.2
+- MAGENTO CE 1.8.0.0
 
 ## Instructions
 
