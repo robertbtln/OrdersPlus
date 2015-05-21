@@ -4,9 +4,17 @@
 
 **OrdersPlus** is a *Magento* module that was originally made to extend the functionality of the Magento Orders Grid (_**Sales** > **Orders**_). It has evolved from that into so much more and **OrdersPlus** has gained so much more functionality.
 
+![](https://cloud.githubusercontent.com/assets/1588760/7760584/2cb797be-ffda-11e4-8176-3455e25e8d6d.jpg)
+
+
 **Long(er) Version:**
 
 The standard Magento Orders Grid is regarded by many to be a little lacking when it comes to information about orders. By default, you would need to go into each order to get some important pieces of information. This module lets the admin of the shop control extra pieces of information for that grid. You can enable extra columns to show on the orders grid such as Order Information (products, skus & quantities ordered), payment type, various customer information, etc. You can also disable default columns if you believe they’re not needed.
+
+![](https://cloud.githubusercontent.com/assets/1588760/7760586/2cbbd5ea-ffda-11e4-887e-1fa83137f2cd.jpg)
+![](https://cloud.githubusercontent.com/assets/1588760/7760585/2cb9edac-ffda-11e4-9ef6-675ed583a2e4.jpg)
+![](https://cloud.githubusercontent.com/assets/1588760/7760587/2cc6368e-ffda-11e4-8985-ab6892ea3609.jpg)
+![](https://cloud.githubusercontent.com/assets/1588760/7760588/2cc8b850-ffda-11e4-8735-785b20b6d081.jpg)
 
 **Here is a list of what this module has to offer:**
 
