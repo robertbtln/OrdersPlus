@@ -31,7 +31,7 @@
     <?php // GET AVAILABLE STOCK QTY (below) ?>
     <tr style="background:#daeae2!important;">
         <?php 
-            $_sku = implode('<br />', Mage::helper('catalog')->splitSku($this->htmlEscape($this->getSku())));
+            $_sku = $this->escapeHtml($this->getSku());
             $_products = Mage::getModel('catalog/product')->loadByAttribute('sku', $_sku);
             $_stocks = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_products)->getQty();
         ?>
