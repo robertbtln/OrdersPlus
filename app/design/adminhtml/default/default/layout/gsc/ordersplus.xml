@@ -1,42 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout version="0.1.0">
 <!-- Sales > Orders > [Select Order] Items Order Grid -->
+    <adminhtml_sales_order_index>
+        <reference name="head">
+            <action method="addCss"><stylesheet>gsc/ordersplus/admin-styles.css</stylesheet></action>
+        </reference>
+     </adminhtml_sales_order_index>
+
     <adminhtml_sales_order_view>
         <!-- Show Lifetime Sales Data in Order View -->
         <reference name="order_info">
-            <action ifconfig="ordersplus/salesinfo/lifetime_data" method="setTemplate"><template>ordersplus/sales/order/view/info.phtml</template></action>
+            <action ifconfig="ordersplus/salesinfo/lifetime_data" method="setTemplate">
+                <template>ordersplus/sales/order/view/info.phtml</template>
+            </action>
         </reference>
+        
         <!-- Order Count (Items Ordered header) -->
         <reference name="order_tab_info">
-            <action ifconfig="ordersplus/salesinfo/qtyordered" method="setTemplate"><template>ordersplus/sales/order/view/tab/info.phtml</template></action>
+            <action ifconfig="ordersplus/salesinfo/qtyordered" method="setTemplate">
+                <template>ordersplus/sales/order/view/tab/info.phtml</template>
+            </action>
         </reference>
+
         <!-- Show stock qty in Items Ordered grid -->
         <reference name="order_items">
-            <action ifconfig="ordersplus/salesinfo/orderstock" method="addColumnRender"><column>qty</column><block>adminhtml/sales_items_column_qty</block><template>ordersplus/sales/items/column/qty.phtml</template></action>
+            <action ifconfig="ordersplus/salesinfo/orderstock" method="addColumnRender">
+                <column>qty</column>
+                <block>adminhtml/sales_items_column_qty</block>
+                <template>ordersplus/sales/items/column/qty.phtml</template>
+            </action>
         </reference>
     </adminhtml_sales_order_view>
 
     <adminhtml_sales_order_view_tab_info>
         <reference name="items_grid">
-            <action ifconfig="ordersplus/salesinfo/createstock" method="setTemplate"><template>ordersplus/sales/order/create/items/grid.phtml</template></action>
+            <action ifconfig="ordersplus/salesinfo/createstock" method="setTemplate">
+                <template>ordersplus/sales/order/create/items/grid.phtml</template>
+            </action>
         </reference>
         <block type="core/template" before="cart_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml" />
     </adminhtml_sales_order_view_tab_info>
 
 <!-- Create Order [Items Ordered] Grid -->
     <adminhtml_sales_order_create_index>
-    	<reference name="items_grid">
-    		<action ifconfig="ordersplus/salesinfo/createstock" method="setTemplate"><template>ordersplus/sales/order/create/items/grid.phtml</template></action>
-    	</reference>
+        <reference name="items_grid">
+            <action ifconfig="ordersplus/salesinfo/createstock" method="setTemplate">
+                <template>ordersplus/sales/order/create/items/grid.phtml</template>
+            </action>
+        </reference>
     </adminhtml_sales_order_create_index>
+
     <adminhtml_sales_order_create_load_block_data>
-    	<reference name="items_grid">
-    		<action ifconfig="ordersplus/salesinfo/createstock" method="setTemplate"><template>ordersplus/sales/order/create/items/grid.phtml</template></action>
-    	</reference>
+        <reference name="items_grid">
+            <action ifconfig="ordersplus/salesinfo/createstock" method="setTemplate">
+                <template>ordersplus/sales/order/create/items/grid.phtml</template>
+            </action>
+        </reference>
     </adminhtml_sales_order_create_load_block_data>
+
     <adminhtml_sales_order_create_load_block_items>
-    	<reference name="items_grid">
-    		<action ifconfig="ordersplus/salesinfo/createstock" method="setTemplate"><template>ordersplus/sales/order/create/items/grid.phtml</template></action>
-    	</reference>
+        <reference name="items_grid">
+            <action ifconfig="ordersplus/salesinfo/createstock" method="setTemplate">
+                <template>ordersplus/sales/order/create/items/grid.phtml</template>
+            </action>
+        </reference>
     </adminhtml_sales_order_create_load_block_items>
 </layout>

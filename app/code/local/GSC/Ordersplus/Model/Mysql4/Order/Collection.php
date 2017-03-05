@@ -14,9 +14,7 @@ class GSC_Ordersplus_Model_Mysql4_Order_Collection extends Mage_Sales_Model_Mysq
         /* @var $countSelect Varien_Db_Select */
         $countSelect = parent::getSelectCountSql();
 
-        //added 
         $countSelect->reset(Zend_Db_Select::GROUP);
-        //end
 
         $countSelect->resetJoinLeft();
         return $countSelect;

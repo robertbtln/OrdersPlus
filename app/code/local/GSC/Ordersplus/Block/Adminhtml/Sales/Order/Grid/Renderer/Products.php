@@ -18,33 +18,57 @@ class GSC_Ordersplus_Block_Adminhtml_Sales_Order_Grid_Renderer_Products extends 
      */
     public function render(Varien_Object $row)
     {
-        $skus = explode('|', $row->getSkus());
-        $qtys = explode('|', $row->getQtys());
-        $names = explode('|', $row->getNames());
-        $html = '';
+        $orderData = $row->getData();
 
-        if($this->getColumn()->getRenderColumn() == 'names') {
-            $html .= sprintf('<tr title="%s" style="cursor:default;"><td><div style="font-weight:bold; margin-bottom:5px; color:#202020;">- Total Quantity -</div></td><td style="width:1em; font-weight:bold; color:#202020;">%s</td></tr>', $sku, array_sum($qtys), trim($names[$i]), $sku, trim($qtys[$i]));
-            $show = Mage::getStoreConfig('ordersplus/orderinfocolumns/product_show');
-            $j = 0;
-              
-            foreach ($skus as $i => $sku) {
-                if($j <= $show-1) {
-                    if($qtys[$i] == round($qtys[$i],0)) {
-                        $html .= sprintf('<tr title="%s" style="cursor:default;"><td><div style="font-weight:bold;">%s</div><div style="margin-top:8px;"><span style="font-weight:bold;">SKU:</span>%s</div></td><td style="width:1em;">%d</td></tr>', $sku, trim($names[$i]), $sku, trim($qtys[$i]));
-                    } else {
-                       $html .= sprintf('<tr title="%s" style="cursor:default;"><td><div style="font-weight:bold;">%s</div><div style="margin-top:8px;"><span style="font-weight:bold;">SKU:</span>%s</div></td><td style="width:1em;">%.4f</td></tr>', $sku, trim($names[$i]), $sku, trim($qtys[$i]));
-                    }
+        $skus = explode('|||', $orderData['skus']);
+        $qtys = explode('|||', $orderData['qtys']);
+        $names = explode('|||', $orderData['names']);
+        // Get the number of products to show
+        $show = Mage::getStoreConfig('ordersplus/orderinfocolumns/product_show');
+        $skuCount = count($skus);
+
+        $html = '<table id="gsc-products-admin-table"><tbody>';
+        if ($this->getColumn()->getRenderColumn() == 'names') {  // TODO remove as not needed?
+            $html .= sprintf('<tr>
+                                  <td>
+                                      <div class="bold">- Total Quantity -</div>
+                                  </td>  
+                                  <td>
+                                    <div class="bold">%s</div>
+                                  </td>
+                              </tr>', array_sum($qtys));
+
+            foreach ($skus as $key => $value) {
+                if ($key + 1 > $show) {
+                    continue;
                 }
-                $j++; 
+
+                $html .= sprintf('<tr>
+                                      <td>
+                                          <div class="bold">%s</div>
+                                          <div>
+                                              <span class="bold">SKU:</span> %s
+                                          </div>
+                                      </td>
+                                      <td>
+                                        <div>%d</div>
+                                      </td>
+                                  </tr>',
+                                  trim($names[$key]),
+                                  $skus[$key],
+                                  trim($qtys[$key]));
             }
 
-            if($j > $show) {
-                $html .= '<tr><td colspan="2"><div style="font-style:italic; color:#202020;">--- more item(s) ---</div></td></tr>';
+            if ($skuCount > $show) {
+                $html .= sprintf('<tr>
+                                      <td colspan="2">
+                                          <div class="italic">--- (%s) more item%s ---</div>
+                                      </td>
+                                  </tr>', $skuCount - $show, (($skuCount - $show) > 1 ? 's' : ''));
             }
         }
 
-        return '<table style="border: 0; border-collapse: collapse; color:#3e3e3e;"><tbody>'.$html.'</tbody></table>';
+        return $html . '</tbody></table>';
       }
 
 }

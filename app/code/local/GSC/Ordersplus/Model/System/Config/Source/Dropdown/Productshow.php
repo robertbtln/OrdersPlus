@@ -9,6 +9,10 @@
 
 class GSC_Ordersplus_Model_System_Config_Source_Dropdown_Productshow
 {
+    /**
+     * Sets the values in the admin for how many products to show in the Sales Order Grid.
+     *
+     */
     public function toOptionArray()
     {
         return array(

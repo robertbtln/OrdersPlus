@@ -1,0 +1,9 @@
+#gsc-products-admin-table { 
+    cursor: default;
+}
+#gsc-products-admin-table tbody tr {
+    background: #f4f4f4;
+}
+#gsc-products-admin-table tbody tr.even {
+    background: #fff;
+}

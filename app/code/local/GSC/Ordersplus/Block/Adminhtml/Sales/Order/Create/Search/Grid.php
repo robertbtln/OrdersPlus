@@ -43,10 +43,10 @@ class GSC_Ordersplus_Block_Adminhtml_Sales_Order_Create_Search_Grid extends Mage
                 $productIds = 0;
             }
             if ($column->getFilter()->getValue()) {
-                $this->getCollection()->addFieldToFilter('entity_id', array('in'=>$productIds));
+                $this->getCollection()->addFieldToFilter('entity_id', array('in' => $productIds));
             } else {
-                if($productIds) {
-                    $this->getCollection()->addFieldToFilter('entity_id', array('nin'=>$productIds));
+                if ($productIds) {
+                    $this->getCollection()->addFieldToFilter('entity_id', array('nin' => $productIds));
                 }
             }
         } else {
@@ -69,7 +69,11 @@ class GSC_Ordersplus_Block_Adminhtml_Sales_Order_Create_Search_Grid extends Mage
             ))
             ->addAttributeToSelect('gift_message_available');
 
-        $collection->getSelect()->joinLeft(array('cisi' => 'cataloginventory_stock_item'),'e.entity_id = cisi.product_id', array('stock_qty' => 'cisi.qty'));  
+        $collection->getSelect()->joinLeft(
+            array('cisi' => 'cataloginventory_stock_item'),
+            'e.entity_id = cisi.product_id',
+            array('stock_qty' => 'cisi.qty')
+        );  
 
         Mage::getSingleton('catalog/product_status')->addSaleableFilterToCollection($collection);
 
