@@ -1,0 +1,7 @@
+app/code/local/GSC/Ordersplus/ app/code/local/GSC/Ordersplus/
+app/etc/modules/GSC_Ordersplus.xml app/etc/modules/GSC_Ordersplus.xml
+app/design/adminhtml/default/default/layout/gsc/ app/design/adminhtml/default/default/layout/gsc/
+app/design/adminhtml/default/default/template/ordersplus/ app/design/adminhtml/default/default/template/ordersplus/
+app/design/frontend/base/default/layout/gsc/ app/design/frontend/base/default/layout/gsc/
+app/design/frontend/base/default/template/ordersplus/ app/design/frontend/base/default/template/ordersplus/
+skin/adminhtml/default/default/gsc/ordersplus/ skin/adminhtml/default/default/gsc/ordersplus/
