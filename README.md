@@ -68,15 +68,30 @@ As was mentioned in the _Order Breakdown_ area, this module adds commenting func
 - MAGENTO CE 1.6.2.0
 - MAGENTO CE 1.7.0.2
 - MAGENTO CE 1.8.0.0
+- MAGENTO CE 1.9.3.1
 
 ## Instructions
 
-Please backup your site and test on a test site/server first!
+_Disclaimer: Please backup your site and test on a test server first!_
 
-These instructions are for the infamous (well, um…) Orders Plus module.
+**Non-modman  directions:**
 
-1. Retrieve the module code from Github however you desire.
-2. Upload (via FTP client, such as [FileZilla](http://filezilla-project.org/)) the **app** directory to the root of your Magento install.
+1. Retrieve the module code from Github however you desire but SSH is recommended.
+
+  Example:
+    ```bash
+    $ cd ~/Sites/
+    $ git clone git@github.com:gsafcik/OrdersPlus.git OrdersPlus
+    $ cd OrdersPlus
+    ```
+
+2. Copy all content into your magento root.
+  
+  Example:
+    ```bash
+    cp -r * /your/magento/root/  <-- last dir is the one all others copied too
+    ```
+
 3. If you're logged into your admin panel, please log out and then log back in. Otherwise you will get that pesky _**404, not found**_ message when trying to view the **config** area.
 
 Then navigate to
@@ -92,7 +107,7 @@ for additional options. Once there you'll see the following tabs
 - Additional Grid Columns: Customer Information Columns
 - OrdersPlus Main Option Tabs
 
-![](http://www.graphicsourcecode.com/wp-content/uploads/2012/09/ordersplus-screen1.jpg)
+![](https://cloud.githubusercontent.com/assets/1588760/23782600/d3d88b36-0512-11e7-96fe-55ae77121d0e.png)
 
 **Here's a general description of each tab:**
 
@@ -105,4 +120,4 @@ The titles are pretty self explanatory so I won't go into each one. The ones tha
 
 Once configured the way you want, head to **Sales** > **Orders** to view the grid and reap the benefit of all the extra information.
 
-**Please note:** you will have to scroll to the right on the sales grid if you have more than the default number of columns showing.
+**Please note:** be aware that enabling a lot of columns will make it necessary to scroll to the grid to the right to view them all.
